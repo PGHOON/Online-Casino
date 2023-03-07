@@ -5,5 +5,3 @@ Online Casino
 
 Lance
 - One day from retirement
-
-1. Logo background remove
