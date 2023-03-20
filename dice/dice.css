@@ -3,7 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: chartreuse;
+    background-color: white;
 }
 
 button {
@@ -31,8 +31,11 @@ button:active {
 
 .game {
     position: relative;
-    width: auto;
+    align-items: center;
+    width: 500px;
     height: 100%;
+    margin-right: 700px;
+    margin-top: 500px;
 }
 
 .container {
@@ -55,8 +58,8 @@ button:active {
     height: 20px;
     margin: -10px 5px 5px -10px;
     border-radius: 20px;
-    background-color: orange;
-    box-shadow: inset 2px 2px red;
+    background-color: white;
+    box-shadow: inset -2px -2px grey;
 }
 
 .dice-one {
@@ -69,9 +72,20 @@ button:active {
     left: 150px;
 }
 
-.side {
+#dice1>.side {
     position: absolute;
-    background-color: #fff;
+    background-color: red;
+    border-radius: 5px;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #cacaca;
+    text-align: center;
+    line-height: 2em;
+}
+
+#dice2>.side {
+    position: absolute;
+    background-color: blue;
     border-radius: 5px;
     width: 100px;
     height: 100px;

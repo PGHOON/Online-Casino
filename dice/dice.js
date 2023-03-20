@@ -1,21 +1,25 @@
 var elDiceOne = document.getElementById('dice1');
 var elDiceTwo = document.getElementById('dice2');
 var elComeOut = document.getElementById('roll');
+var rollButton = document.querySelector('.dice-button');
 
 var showClasses = ['show-1', 'show-2', 'show-3', 'show-4', 'show-5', 'show-6'];
 
+function enableButton(button) {
+    button.disabled = false;
+}
 elComeOut.onclick = function () { rollDice(); };
 
 function revert1(normal) {
     elDiceOne.classList.remove(...showClasses);
     elDiceOne.classList.add('show-' + normal);
-    console.log("checking for timeout after: " + elDiceOne.classList[2].slice(5));
+    //console.log("checking for timeout after: " + elDiceOne.classList[2].slice(5));
 }
 
 function revert2(normal) {
     elDiceTwo.classList.remove(...showClasses);
     elDiceTwo.classList.add('show-' + normal);
-    console.log("checking for timeout after: " + elDiceTwo.classList[2].slice(5));
+    //console.log("checking for timeout after: " + elDiceTwo.classList[2].slice(5));
 }
 
 
@@ -31,7 +35,9 @@ function sameside2(prev) {
     elDiceTwo.classList.add('show-' + temp_show);
 }
 
-function rollDice() {
+async function rollDice() {
+    rollButton.disabled = true;
+    setTimeout(enableButton, 1500, rollButton);
     var pre_dice1 = elDiceOne.classList[2].slice(5);
     var pre_dice2 = elDiceTwo.classList[2].slice(5);
     // console.log("previous dot 1: " + pre_dice1);
@@ -39,7 +45,7 @@ function rollDice() {
     var diceOne = Math.floor((Math.random() * 6) + 1);
     var diceTwo = Math.floor((Math.random() * 6) + 1);
 
-    console.log(diceOne + ' ' + diceTwo);
+    //console.log(diceOne + ' ' + diceTwo);
 
     if (pre_dice1 == diceOne) {
         //console.log("same side 1");
@@ -64,4 +70,6 @@ function rollDice() {
     }
     //console.log("after dot1 : " + elDiceOne.classList[2].slice(5));
     //console.log("after dot2 : " + elDiceTwo.classList[2].slice(5));
+
+    return "true";
 }
