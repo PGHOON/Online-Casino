@@ -5,6 +5,7 @@ var rollButton = document.querySelector('.dice-button');
 
 var showClasses = ['show-1', 'show-2', 'show-3', 'show-4', 'show-5', 'show-6'];
 
+//disables button when dice is rolling
 function enableButton(button) {
     button.disabled = false;
 }
