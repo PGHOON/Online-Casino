@@ -22,6 +22,7 @@ img {
 form {
     display: flex;
     flex-direction: column;
+
 }
 
 label {
@@ -30,14 +31,17 @@ label {
 
 input[type="text"],
 input[type="password"] {
-    padding: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     margin-bottom: 10px;
     width: 100%;
 }
 
 input[type="submit"] {
     background-color: #4CAF50;
+    margin-top: 10px;
     color: white;
+    padding-left: 50px;
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -46,4 +50,14 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #45a049;
+}
+
+.sign-up {
+    align-self: self-start;
+    margin-top: 20px;
+}
+
+.find-pw {
+    align-self: self-start;
+    margin-top: 20px;
 }
