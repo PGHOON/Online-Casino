@@ -60,7 +60,7 @@
                 <div class="error"><?php echo $error; ?></div>
             <?php } ?>
             <div class="sign-up">
-                <a href="#"> I don't have an account</a>
+                <a href="register.html"> I don't have an account</a>
             </div>
             <div class="find-pw">
                 <a href="#"> I forgot my password</a>
