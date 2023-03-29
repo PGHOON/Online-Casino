@@ -32,7 +32,7 @@ $stmt->bindParam(5, $_POST["email"]);
 $stmt->bindParam(6, $_POST["password"]);
 
 if ($stmt->execute()) {
-    echo "User registered successfully.";
+    echo "<script>alert('Registration successful!');window.location.href='login.html';</script>";
 } else {
     echo "Error: " . $stmt->errorCode() . " - " . implode(", ", $stmt->errorInfo());
 }
