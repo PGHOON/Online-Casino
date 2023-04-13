@@ -1,4 +1,16 @@
-const symbol = ["🍋", "🍒", "🍊", "🍈", "🍇", "🍉", "💎"];
+const images = [
+    "symbols/lemon.png",
+    "symbols/cherry.png",
+    "symbols/apple.png",
+    "symbols/plum.png",
+    "symbols/clover.png",
+    "symbols/coin.png",
+    "symbols/bell.png"
+  ];
+
+
+const symbol = images;
+//["🍋", "🍒", "🍊", "🍈", "🍇", "🍉", "💎"];
 const weight = [0.25, 0.225, 0.2, 0.15, 0.1, 0.05, 0.025];
 var slot1 = document.getElementById("slot1");
 var slot2 = document.getElementById("slot2");
@@ -24,9 +36,11 @@ function spin() {
         spinIndex--;
         spins[i] = spinIndex;
     }
-    slot1.textContent = symbol[spins[0]];
-    slot2.textContent = symbol[spins[1]];
-    slot3.textContent = symbol[spins[2]];
+
+    // set the src attribute of each img element to the corresponding image source in the images array
+    slot1.setAttribute('src', images[spins[0]]);
+    slot2.setAttribute('src', images[spins[1]]);
+    slot3.setAttribute('src', images[spins[2]]);
 
     //reward
     if (spins[0] == 6 && spins[1] == 6 && spins[2] == 6){
