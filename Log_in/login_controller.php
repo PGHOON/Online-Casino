@@ -13,7 +13,9 @@ if ($data == -1) {
     $error_message = "User does not exist. Try registering first.";
     header('Location: login.php?error=' . urldecode($error_message));
 } else {
-    require 'login_view.php';
+    //require 'login_view.php';
+    require '../main/main.php';
+    //header('Location: ../main/main.php');
 }
 
 ?>

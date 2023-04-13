@@ -10,13 +10,23 @@
 </head>
 
 <body>
-    <img src="logo_vector.png" alt="Logo" class="center">
     <div class="container">
         <h1>
             <?php foreach ($data as $logged_user) ?>
             <?php echo "user name: " . $logged_user['userName']
-            . "<br>user password: " . $logged_user['password']; ?>
+            . "<br>user password: " . $logged_user['password']-->; ?>
         </h1>
+        <div class="dice">
+            <a href="../dice/dice.html"> Dice Game</a>
+        </div>
+        <div class="crash">
+            <a href="../crash_game/crash.html">Crash Game</a>
+        </div>
+        <div class="slot">
+            <a href="../Slot_Machine/Slotmachine.html">Slot Machine</a>
+        </div>
+        <p>balance : </p>   <!--we need trigger that lines with user table. -->
+        <p>etc... : </p>
     </div>
 </body>
 
