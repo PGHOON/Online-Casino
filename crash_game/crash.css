@@ -1,4 +1,40 @@
 canvas {
 	display: block;
+	border: 1px solid black;
 	margin: 0 auto;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	text-align: center;
+}
+
+input[type="number"] {
+	width: 100px;
+	text-align: center;
+	margin: 10px;
+}
+
+button {
+	padding: 10px;
+	margin: 10px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #3e8e41;
+}
+
+#multiplier {
+	font-size: 20px;
+	margin: 20px;
+}
+
+#balance {
+	font-size: 20px;
+	margin: 20px;
 }
