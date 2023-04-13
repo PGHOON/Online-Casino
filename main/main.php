@@ -14,7 +14,8 @@
         <h1>
             <?php foreach ($data as $logged_user) ?>
             <?php echo "user name: " . $logged_user['userName']
-            . "<br>user password: " . $logged_user['password']-->; ?>
+            . "<br>user password: " . $logged_user['password']
+            . "<br>user balance: " . $logged_user['balance']; ?>
         </h1>
         <div class="dice">
             <a href="../dice/dice.html"> Dice Game</a>

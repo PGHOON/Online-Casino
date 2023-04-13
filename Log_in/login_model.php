@@ -11,7 +11,7 @@ class Model
 
     function get_data($username, $password)
     {
-        $stmt = $this->dbh->prepare("SELECT * FROM user WHERE username = :username");
+        $stmt = $this->dbh->prepare("SELECT * FROM user JOIN account WHERE username = :username AND account.UserID = user.UserID");
         $stmt->bindParam(':username', $username);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
