@@ -33,6 +33,19 @@ xhr.onload = function() {
 };
 xhr.send();
 
+function updateCoin(coin) {
+    fetch('updatecoin.php', {
+        method: 'POST',
+        body: JSON.stringify({ coin: coin }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.text())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+}
+
 function spin() {
     coin--;
     current.innerHTML = "COIN : " + coin;
@@ -81,5 +94,7 @@ function spin() {
     } else if(spins[0] == 1){
         coin += 1;
         current.innerHTML = "COIN : " + coin;
-    }
+    };
+
+    updateCoin(coin);
 }
