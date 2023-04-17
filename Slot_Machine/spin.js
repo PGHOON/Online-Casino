@@ -18,7 +18,20 @@ var slot3 = document.getElementById("slot3");
 
 // Coin
 var current = document.getElementById("current");
-var coin = 20;
+var coin = 0;
+
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'balance.php');
+xhr.onload = function() {
+    if (xhr.status === 200) {
+        var response = JSON.parse(xhr.responseText);
+        coin = response.coin;
+        current.innerHTML = "COIN : " + coin;
+    } else {
+        console.log('Request failed.  Returned status of ' + xhr.status);
+    }
+};
+xhr.send();
 
 function spin() {
     coin--;
