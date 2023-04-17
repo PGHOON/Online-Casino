@@ -1,3 +1,7 @@
+body {
+    background-color: Black;
+}  
+
 .container {
     display: flex;
     flex-direction: column;
@@ -12,6 +16,7 @@ img {
 }
 
 .center {
+    color: white;
     width: 30%;
     height: auto;
     display: block;
@@ -22,7 +27,7 @@ img {
 form {
     display: flex;
     flex-direction: column;
-
+    color: white;
 }
 
 label {
@@ -36,6 +41,7 @@ input[type="password"] {
     padding-bottom: 5px;
     margin-bottom: 0px;
     width: 100%;
+    background-color: midnightblue;
 }
 
 input[type="submit"] {
@@ -67,3 +73,7 @@ button {
   button:hover {
     background-color: #999;
   }
+
+h3 {
+    color: white;
+}

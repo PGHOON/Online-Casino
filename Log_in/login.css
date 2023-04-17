@@ -1,4 +1,7 @@
+body {background-color: Black;}
+
 .container {
+    color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,7 +25,6 @@ img {
 form {
     display: flex;
     flex-direction: column;
-
 }
 
 label {
