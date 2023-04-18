@@ -28,7 +28,9 @@
 			$row = $stmt->fetch(PDO::FETCH_ASSOC);
 			if ($row) {
 				$balance = $row['balance'];
-				echo "The current userID(session) is : " . $_SESSION['userID'] . "<br>user balance: " . $balance;
+				echo '<p style="color: ' . 'white' . '">'
+				. "The current userID(session) is : " . $_SESSION['userID']
+				. "<br>user balance: " . $balance . '</p>';
 			}
 		} else {
 			echo "Error retrieving user account.";

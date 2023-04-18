@@ -31,8 +31,6 @@
         <div class="slot">
             <a href="../Slot_Machine/Slotmachine.php">Slot Machine</a>
         </div>
-        <p>balance : ...</p>
-        <p>etc... : ...?</p>
     </div>
 </body>
 </html>
