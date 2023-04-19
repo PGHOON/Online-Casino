@@ -1,3 +1,15 @@
+.user-info {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -63,18 +75,18 @@ button:active {
 }
 
 .dice-one {
-    position: absolute;
-    left: -100px;
+    position: relative;
+    left: 100px;
 }
 
 .dice-two {
-    position: absolute;
-    left: 300px;
+    position: relative;
+    left: 500px;
 }
 
 #dice1>.side {
     position: absolute;
-    background-color: red;
+    background-color: rgb(255, 0, 0);
     border-radius: 10px;
     width: 200px;
     height: 200px;

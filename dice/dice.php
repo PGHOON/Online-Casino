@@ -13,6 +13,14 @@
 </head>
 
 <body>
+    <div class="user-info">
+        <p>User Information:</p>
+        <ul>
+            <li>Name: John Doe</li>
+            <li>Balance: $100</li>
+        </ul>
+    </div>
+
     <div class="game">
         <div class="container">
             <div id="dice1" class="dice dice-one show-1">
@@ -129,7 +137,5 @@
     </div>
     <script src="dice.js"></script>
 </body>
-make tie and odd not selectable
-even and seven
 
 </html>
