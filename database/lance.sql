@@ -50,14 +50,12 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='User information';
 
 
---
--- Triggers `user`
---
+
 DELIMITER $$
-CREATE TRIGGER `delete_account` AFTER DELETE ON `user` FOR EACH ROW BEGIN
+CREATE TRIGGER `delete_account` BEFORE DELETE ON `user` FOR EACH ROW 
+BEGIN
     DELETE FROM account WHERE userID = OLD.userID;
-END
-$$
+END$$
 DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `insert_account` AFTER INSERT ON `user` FOR EACH ROW BEGIN
