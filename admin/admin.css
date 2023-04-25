@@ -1,5 +1,7 @@
-
-
+body {
+  background-color: black;
+  color: white;
+}
 
 h1{
     
@@ -7,8 +9,25 @@ h1{
 }
 
 
+input[type="button"],
+input[type="password"],
+input[type="submit"] {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 0px;
+    background-color: white;
+    color: black;
+}
 
-
+input[type="text"] {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    width: 100%;
+    margin-bottom: 0px;
+    background-color: white;
+    color: black;
+}
 
 
 nav {
@@ -82,7 +101,7 @@ nav ul li a.active {
     th, td {
     text-align: left;
     padding: 5px;
-    border: 1.5px solid black;
+    border: 1.5px solid white;
     }
     th {
     background-color: #13280e;

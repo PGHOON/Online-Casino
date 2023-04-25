@@ -25,6 +25,9 @@
             . "<br>user id: " . $logged_user['userID']
             . "<br>user id(session): " . $_SESSION['userID']?>
         </h1>
+        <div class="logout">
+            <a href="../Log_in/logout.php">Logout</a>
+        </div>
         <div class="dice">
             <a href="../dice/dice.php"> Dice Game</a>
         </div>

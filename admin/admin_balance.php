@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     <div class="center">
     <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
-      <form method="POST" action="admin.php">
+      <form method="POST" action="admin_balance.php">
         <label>userID:</label>
         <input type="button" name="userID" value="<?php echo $row['userID']; ?>"><br>
         <label>balance:</label>
