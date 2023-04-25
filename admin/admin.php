@@ -34,7 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $query = "UPDATE user SET userID = :userID, userName = :userName, firstName = :firstName, lastName = :lastName, email = :email, password = :password";
+    $query = "UPDATE user SET userID = :userID, userName = :userName, firstName = :firstName, lastName = :lastName, email = :email, password = :password
+                WHERE userID = :userID";
 
     $stmt = $conn->prepare($query);
     $stmt->bindParam(':userID', $userID);
@@ -50,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Dashboard</title>
+    <title>User Information</title>
     <link rel="stylesheet" type="text/css" href="admin.css">
 </head>
 <body>
@@ -68,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
       <form method="POST" action="admin.php">
         <label>userID:</label>
-        <input type="text" name="userID" value="<?php echo $row['userID']; ?>"><br>
+        <input type="button" name="userID" value="<?php echo $row['userID']; ?>"><br>
         <label>userName:</label>
         <input type="text" name="userName" value="<?php echo $row['userName']; ?>"><br>
         <label>firstName:</label>
