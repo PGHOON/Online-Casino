@@ -22,6 +22,11 @@ $stmt->execute();
 $maxid = $stmt->fetch(PDO::FETCH_ASSOC)["maxid"];
 $userid = $maxid + 1;
 
+//encrypt password
+$password = $_POST["password"];
+$salt = "codeflix";
+$password_encrypted = sha1($password.$salt);
+
 // Bind parameters and execute the SQL statement
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(1, $userid);
@@ -29,7 +34,7 @@ $stmt->bindParam(2, $_POST["username"]);
 $stmt->bindParam(3, $_POST["firstname"]);
 $stmt->bindParam(4, $_POST["lastname"]);
 $stmt->bindParam(5, $_POST["email"]);
-$stmt->bindParam(6, $_POST["password"]);
+$stmt->bindParam(6, $password_encrypted);
 
 if ($stmt->execute()) {
     echo "<script>alert('Registration successful!');window.location.href='login.php';</script>";
