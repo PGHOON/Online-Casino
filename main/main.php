@@ -23,7 +23,7 @@
             . "<br>user id(session): " . $_SESSION['userID']?>
         </h1>
         <div class="dice">
-            <a href="../dice/dice.html"> Dice Game</a>
+            <a href="../dice/dice.php"> Dice Game</a>
         </div>
         <div class="crash">
             <a href="../crash_game/crash.html">Crash Game</a>
