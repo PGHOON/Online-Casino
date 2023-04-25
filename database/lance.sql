@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 13, 2023 at 08:37 PM
+-- Generation Time: Apr 25, 2023 at 09:12 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -20,7 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `lance`
 --
+
 -- --------------------------------------------------------
+
 --
 -- Table structure for table `account`
 --
@@ -30,49 +32,60 @@ CREATE TABLE `account` (
   `balance` int(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Balance for each user';
 
+
+
 -- --------------------------------------------------------
+
 --
 -- Table structure for table `user`
 --
+
 CREATE TABLE `user` (
   `userID` int(6) NOT NULL,
   `userName` varchar(45) NOT NULL,
   `firstName` varchar(45) NOT NULL,
   `lastName` varchar(45) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(20) NOT NULL
+  `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='User information';
 
 
+--
+-- Triggers `user`
+--
 DELIMITER $$
--- Insert Trigger
-CREATE TRIGGER insert_account
-AFTER INSERT ON user
-FOR EACH ROW
-BEGIN
-    INSERT INTO account (userID, balance) VALUES (NEW.userID, 100);
-END$$
--- Delete Trigger
-CREATE TRIGGER delete_account
-AFTER DELETE ON user
-FOR EACH ROW
-BEGIN
+CREATE TRIGGER `delete_account` AFTER DELETE ON `user` FOR EACH ROW BEGIN
     DELETE FROM account WHERE userID = OLD.userID;
-END$$
+END
+$$
 DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `insert_account` AFTER INSERT ON `user` FOR EACH ROW BEGIN
+    INSERT INTO account (userID, balance) VALUES (NEW.userID, 100);
+END
+$$
+DELIMITER ;
+
+--
+-- Indexes for dumped tables
+--
+
 --
 -- Indexes for table `account`
 --
 ALTER TABLE `account`
   ADD KEY `fk_account_user_idx` (`userID`);
+
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`userID`);
+
 --
 -- Constraints for dumped tables
 --
+
 --
 -- Constraints for table `account`
 --
