@@ -2,7 +2,13 @@
 require_once 'login_model.php';
 session_start();
 $model = new Model('localhost', 'lance', 'root', '');
-$data = $model->get_data($_POST['username'], $_POST['password']);
+
+//encrypt password
+$password = $_POST["password"];
+$salt = "codeflix";
+$password_encrypted = sha1($password.$salt);
+
+$data = $model->get_data($_POST['username'], $password_encrypted);
 
 if ($data == -1) {
     $error_message = "Your password is wrong. Try again.";
