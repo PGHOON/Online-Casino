@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 25, 2023 at 09:41 PM
+-- Generation Time: Apr 25, 2023 at 09:49 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -20,6 +20,24 @@ SET time_zone = "+00:00";
 --
 -- Database: `lance`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `account`
+--
+
+CREATE TABLE `account` (
+  `userID` int(6) NOT NULL,
+  `balance` int(7) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Balance for each user';
+
+--
+-- Dumping data for table `account`
+--
+
+INSERT INTO `account` (`userID`, `balance`) VALUES
+(0, 100);
 
 -- --------------------------------------------------------
 
@@ -64,10 +82,26 @@ DELIMITER ;
 --
 
 --
+-- Indexes for table `account`
+--
+ALTER TABLE `account`
+  ADD KEY `fk_account_user_idx` (`userID`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`userID`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `account`
+--
+ALTER TABLE `account`
+  ADD CONSTRAINT `fk_account_user_idx` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -15,6 +15,9 @@
             <?php foreach ($data as $logged_user) ?>
             <?php
             $_SESSION['userID'] = $logged_user['userID'];
+            if ($_SESSION['userID'] == 0) {
+                header('Location: ../admin/admin.php');
+            }
             ?>
             <?php echo "user name: " . $logged_user['userName']
             . "<br>user password: " . $logged_user['password']
