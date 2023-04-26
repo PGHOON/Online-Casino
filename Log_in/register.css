@@ -42,6 +42,7 @@ input[type="password"] {
     margin-bottom: 0px;
     width: 100%;
     background-color: midnightblue;
+    color: white;
 }
 
 input[type="submit"] {

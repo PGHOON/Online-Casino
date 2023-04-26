@@ -10,7 +10,7 @@
             <li><a href="../main/main.php">Home</a></li>
             <li><a href="../dice/dice.php">Dice Game</a></li>
             <li><a href="../crash_game/crash.php">Crash Game</a></li>
-            <li><a href="../Slot_Machine/Slotmachine.php">Slot Machine</a></li>
+            <li><a href="../Slot_Machine/Slotmachine.php">Slot Game</a></li>
             <li><a href="../Log_in/logout.php">Logout</a></li>
         </ul>
     </nav>
