@@ -17,9 +17,15 @@ if ($data == -1) {
     $error_message = "User does not exist. Try registering first.";
     header('Location: login.php?error=' . urldecode($error_message));
 } else {
-    //require 'login_view.php';
+    session_start();
+    foreach ($data as $logged_user)
+    $_SESSION['userID'] = $logged_user['userID'];
+    $_SESSION['userName'] = $logged_user['userName'];
+    $_SESSION['balance'] = $logged_user['balance'];
+    if ($_SESSION['userID'] == 0) {
+    header('Location: ../admin/admin.php');
+    }
     require '../main/main.php';
-    //header('Location: ../main/main.php');
 }
 
 ?>

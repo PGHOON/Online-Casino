@@ -2,31 +2,25 @@
 <head>
     <title>Lance main page</title>
     <link rel="stylesheet" type="text/css" href="main.css">
+    <?php session_start(); ?>
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="../dice/dice.php"> Dice Game</a></li>
-            <li><a href="../crash_game/crash.html">Crash Game</a></li>
+            <li><a href="../main/main.php">Home</a></li>
+            <li><a href="../dice/dice.php">Dice Game</a></li>
+            <li><a href="../crash_game/crash.php">Crash Game</a></li>
             <li><a href="../Slot_Machine/Slotmachine.php">Slot Machine</a></li>
             <li><a href="../Log_in/logout.php">Logout</a></li>
         </ul>
     </nav>
-    <div class="box">
-        <h1>
-            <?php foreach ($data as $logged_user) ?>
-            <?php
-            $_SESSION['userID'] = $logged_user['userID'];
-            if ($_SESSION['userID'] == 0) {
-                header('Location: ../admin/admin.php');
-            }
-            ?>
-            <?php echo "user name: " . $logged_user['userName']
-            . "<br>user password: " . $logged_user['password']
-            . "<br>user balance: " . $logged_user['balance']
-            . "<br>user id: " . $logged_user['userID']
-            . "<br>user id(session): " . $_SESSION['userID']?>
-        </h1>
+    <div class="user-info">
+        <p>User Information:</p>
+        <ul>
+            <li>userID: <?php echo $_SESSION['userID'] ?></li>
+            <li>userName: <?php echo $_SESSION['userName'] ?></li>
+            <li>Balance: $<?php echo $_SESSION['balance'] ?></li>
+        </ul>
     </div>
 </body>
 </html>

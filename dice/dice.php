@@ -10,17 +10,27 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/vader/jquery-ui.css">
     <title>Dice</title>
+    <?php session_start(); ?>
 </head>
 
 <body>
+    <nav>
+        <ul>
+            <li><a href="../main/main.php">Home</a></li>
+            <li><a href="../dice/dice.php">Dice Game</a></li>
+            <li><a href="../crash_game/crash.php">Crash Game</a></li>
+            <li><a href="../Slot_Machine/Slotmachine.php">Slot Machine</a></li>
+            <li><a href="../Log_in/logout.php">Logout</a></li>
+        </ul>
+    </nav>
     <div class="user-info">
         <p>User Information:</p>
         <ul>
-            <li>Name: John Doe</li>
-            <li>Balance: $100</li>
+            <li>userID: <?php echo $_SESSION['userID'] ?></li>
+			<li>userName: <?php echo $_SESSION['userName'] ?></li>
+            <li>Balance: $<?php echo $_SESSION['balance'] ?></li>
         </ul>
     </div>
-
     <div class="game">
         <div class="container">
             <div id="dice1" class="dice dice-one show-1">

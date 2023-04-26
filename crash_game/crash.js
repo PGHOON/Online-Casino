@@ -17,7 +17,7 @@ function drawGraph() {
 		var y = (1 / graphData[i].y) * canvas.height;
 		ctx.lineTo(x, y);
 	}
-
+	ctx.strokeStyle = "white";
 	ctx.stroke();
 }
 

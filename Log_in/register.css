@@ -1,6 +1,6 @@
 body {
     background-color: Black;
-}  
+}
 
 .container {
     display: flex;
@@ -68,11 +68,11 @@ button {
     cursor: pointer;
     width: 100%;
     margin-top: 5px;
-  }
-  
-  button:hover {
+}
+
+button:hover {
     background-color: #999;
-  }
+}
 
 h3 {
     color: white;

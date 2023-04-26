@@ -26,9 +26,6 @@
 		// Check for errors
 		if ($stmt) {
 			$row = $stmt->fetch(PDO::FETCH_ASSOC);
-			if ($row) {
-				$balance = $row['balance'];
-			}
 		} else {
 			echo "Error retrieving user account.";
 		}
@@ -44,9 +41,10 @@
 <body>
 	<nav>
         <ul>
+			<li><a href="../main/main.php">Home</a></li>
             <li><a href="../dice/dice.php"> Dice Game</a></li>
-            <li><a href="../crash_game/crash.html">Crash Game</a></li>
-            <li><a href="Slot_Machine/Slotmachine.php">Slot Machine</a></li>
+            <li><a href="../crash_game/crash.php">Crash Game</a></li>
+            <li><a href="../Slot_Machine/SlotMachine.php">Slot Machine</a></li>
             <li><a href="../Log_in/logout.php">Logout</a></li>
         </ul>
     </nav>
@@ -54,7 +52,8 @@
         <p>User Information:</p>
         <ul>
             <li>userID: <?php echo $_SESSION['userID'] ?></li>
-            <li>Balance: $<?php echo $balance ?></li>
+			<li>userName: <?php echo $_SESSION['userName'] ?></li>
+            <li>Balance: $<?php echo $_SESSION['balance'] ?></li>
         </ul>
     </div>
 	<div id="container">
