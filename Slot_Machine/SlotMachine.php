@@ -28,9 +28,6 @@
 			$row = $stmt->fetch(PDO::FETCH_ASSOC);
 			if ($row) {
 				$balance = $row['balance'];
-				echo '<p style="color: ' . 'white' . '">'
-				. "The current userID(session) is : " . $_SESSION['userID']
-				. "<br>user balance: " . $balance . '</p>';
 			}
 		} else {
 			echo "Error retrieving user account.";
@@ -45,6 +42,21 @@
     <link rel="stylesheet" href="SlotMachine.css">
 </head>
 <body>
+	<nav>
+        <ul>
+            <li><a href="../dice/dice.php"> Dice Game</a></li>
+            <li><a href="../crash_game/crash.html">Crash Game</a></li>
+            <li><a href="Slot_Machine/Slotmachine.php">Slot Machine</a></li>
+            <li><a href="../Log_in/logout.php">Logout</a></li>
+        </ul>
+    </nav>
+	<div class="user-info">
+        <p>User Information:</p>
+        <ul>
+            <li>userID: <?php echo $_SESSION['userID'] ?></li>
+            <li>Balance: $<?php echo $balance ?></li>
+        </ul>
+    </div>
 	<div id="container">
 		<div class="slot">
 			<img id="slot1" src="symbols/lemon.png" alt="lemon image">
@@ -56,7 +68,7 @@
 			<img id="slot3" src="symbols/apple.png" alt="apple image">
 		  </div>
 		<button onclick="spin()">Spin</button>
-        <p><span id="current">COIN : 20</span></p>
+        <p><span id="current">COIN :</span></p>
 	</div>
 	<script src="spin.js"></script>
 </body>

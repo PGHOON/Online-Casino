@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lance main page</title>
-    <link rel="stylesheet" type="text/css" href="login.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
-
 <body>
-    <div class="container">
+    <nav>
+        <ul>
+            <li><a href="../dice/dice.php"> Dice Game</a></li>
+            <li><a href="../crash_game/crash.html">Crash Game</a></li>
+            <li><a href="../Slot_Machine/Slotmachine.php">Slot Machine</a></li>
+            <li><a href="../Log_in/logout.php">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="box">
         <h1>
             <?php foreach ($data as $logged_user) ?>
             <?php
@@ -25,18 +27,6 @@
             . "<br>user id: " . $logged_user['userID']
             . "<br>user id(session): " . $_SESSION['userID']?>
         </h1>
-        <div class="logout">
-            <a href="../Log_in/logout.php">Logout</a>
-        </div>
-        <div class="dice">
-            <a href="../dice/dice.php"> Dice Game</a>
-        </div>
-        <div class="crash">
-            <a href="../crash_game/crash.html">Crash Game</a>
-        </div>
-        <div class="slot">
-            <a href="../Slot_Machine/Slotmachine.php">Slot Machine</a>
-        </div>
     </div>
 </body>
 </html>

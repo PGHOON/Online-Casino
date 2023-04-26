@@ -31,7 +31,7 @@ input[type="text"] {
 
 
 nav {
-    background-color: #407473;
+    background-color: #D446D1;
     color: #fff;
     display: flex;
     text-align: center;
@@ -78,7 +78,8 @@ nav ul li a.active {
     border-radius: 20px;
     padding: 5px;
     margin: 5px 0;
-    background-color: #595967;
+    background-color: #98F768;
+    color: black;
   }
   .Amenu{
     text-align: center;
