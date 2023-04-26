@@ -8,23 +8,25 @@ $dbname = "lance";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-// Get the updated coin value from the request
-$coin = $_POST["coin"];
+if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+  $coin = json_decode(file_get_contents('php://input'), true)['coin'];
+  $_SESSION['balance'] = $coin;
 
-// Update the coin column in the database
-$user_id = $_SESSION['userID'];
-$sql = "UPDATE account SET balance = $coin WHERE userID = $user_id";
+  $user_id = $_SESSION['userID'];
+  $sql = "UPDATE account SET balance = $coin WHERE userID = $user_id";
 
-if ($conn->query($sql) === TRUE) {
-  echo "Record updated successfully";
+  if ($conn->query($sql) === TRUE) {
+      echo "Record updated successfully";
+  } else {
+      echo "Error updating record: " . $conn->error;
+  }
 } else {
-  echo "Error updating record: " . $conn->error;
+  echo 'Only PUT requests are allowed';
+  exit();
 }
-
 $conn->close();
 ?>

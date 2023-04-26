@@ -10,7 +10,7 @@ const images = [
 
 
 const symbol = images;
-//["🍋", "🍒", "🍊", "🍈", "🍇", "🍉", "💎"];
+//🍋🍒🍎🫐🍀💰🔔
 const weight = [0.25, 0.225, 0.2, 0.15, 0.1, 0.05, 0.025];
 var slot1 = document.getElementById("slot1");
 var slot2 = document.getElementById("slot2");
@@ -35,7 +35,7 @@ xhr.send();
 
 function updateCoin(coin) {
     fetch('updatecoin.php', {
-        method: 'POST',
+        method: 'PUT',
         body: JSON.stringify({ coin: coin }),
         headers: {
             'Content-Type': 'application/json'
@@ -45,6 +45,7 @@ function updateCoin(coin) {
     .then(data => console.log(data))
     .catch(error => console.error(error));
 }
+
 
 function spin() {
     coin--;
