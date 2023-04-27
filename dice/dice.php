@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="dice.css">
     <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/vader/jquery-ui.css">
     <title>Dice</title>
     <?php session_start(); ?>
 </head>
@@ -26,9 +24,15 @@
     <div class="user-info">
         <p>User Information:</p>
         <ul>
-            <li>userID: <?php echo $_SESSION['userID'] ?></li>
-			<li>userName: <?php echo $_SESSION['userName'] ?></li>
-            <li>Balance: $<?php echo $_SESSION['balance'] ?></li>
+            <li>userID:
+                <?php echo $_SESSION['userID'] ?>
+            </li>
+            <li>userName:
+                <?php echo $_SESSION['userName'] ?>
+            </li>
+            <li>Balance: $
+                <span id="balance"></span>
+            </li>
         </ul>
     </div>
     <div class="game">
@@ -136,7 +140,7 @@
                 </div>
             </div>
             <br><label for="curMoney">Money you have: $</label>
-            <span id="curMoney">100</span><br><br>
+            <span id="curMoney"></span><br><br>
             <label for="betMoney">Money you want to bet: $</label>
             <input type="number" id="betMoney" min="5">
         </form>
@@ -145,7 +149,7 @@
             <button class="dice-button">Roll dice!</button>
         </div>
     </div>
-    <script src="dice.js"></script>
+    <script src="dice2.js"></script>
 </body>
 
 </html>
