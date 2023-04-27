@@ -36,6 +36,7 @@
         </div>
         <div class="modal-body">
             <p>Last game crashed at: <span id="multiplier2"></span></p>
+            <p id="resultMoney"></p>
         </div>
     </div>
     <div id="overlay"></div>

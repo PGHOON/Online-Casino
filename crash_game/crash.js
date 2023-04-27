@@ -148,17 +148,17 @@ function startBettingTime() {
 }
 
 function endGame() {
+    var payout = bet;
+    if (bet > 0) {
+        document.getElementById("resultMoney").innerHTML = "Your lost your bet amount: $" + payout.toFixed(2);
+    }
     crashModal.style.display = "block";
     document.getElementById("multiplier2").innerHTML = multiplier.toFixed(2) + "x";
     openModal(crashModal);
-    var payout = bet;
     multiplier = 1;
     document.getElementById("multiplier").innerHTML = "1.00x";
     graphData = [{ x: 0, y: 1 }];
     drawGraph();
-    if (bet > 0) {
-        alert("Your lost your bet amount" + payout.toFixed(2));
-    }
     bet = 0;
     document.getElementById("bet").disabled = false;
     document.getElementById("place-bet").disabled = false;
@@ -187,5 +187,6 @@ function openModal(modal) {
 }
 
 function closeModal() {
+    document.getElementById("resultMoney").innerHTML = "";
     crashModal.style.display = "none";
 }
