@@ -2,6 +2,14 @@ body {
     background-color: Black;
 }
 
+.center {
+    width: 30%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #container {
     display: flex;
     justify-content: center;

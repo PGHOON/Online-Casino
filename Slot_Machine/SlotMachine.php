@@ -72,5 +72,6 @@ if (isset($_SESSION['userID'])) {
 		<p><span id="current">COIN :</span></p>
 	</div>
 	<script src="spin.js"></script>
+	<img src="reward_t.png" alt="Logo" class="center">
 </body>
 </html>
