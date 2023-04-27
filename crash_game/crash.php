@@ -4,7 +4,9 @@
 <head>
     <title>Crash Game</title>
     <link rel="stylesheet" href="crash.css">
-    <?php session_start(); ?>
+    <?php if (session_status() !== PHP_SESSION_ACTIVE) {
+        session_start();
+    } ?>
 </head>
 
 <body>
