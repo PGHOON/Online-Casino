@@ -19,7 +19,6 @@ try {
     echo "Connection failed: " . $e->getMessage();
 }
 
-// Query for Artist information
 $query = "SELECT * FROM account";
 
 $stmt = $conn->prepare($query);
@@ -30,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $userID = $_POST['userID'];
     $balance = $_POST['balance'];
 
-    $query = "UPDATE balance SET userID = :userID, balance = :balance
+    $query = "UPDATE account SET userID = :userID, balance = :balance
                 WHERE userID = :userID";
 
     $stmt = $conn->prepare($query);
