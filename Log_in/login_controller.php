@@ -27,6 +27,7 @@ if ($data == -1) {
         header('Location: ../admin/admin.php');
     }
     require '../main/main.php';
+    header('Location: ../main/main.php');
 }
 
 ?>

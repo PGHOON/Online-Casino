@@ -2,7 +2,7 @@
 
 <head>
     <title>Lance main page</title>
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="main1.css">
     <?php if (session_status() !== PHP_SESSION_ACTIVE) {
         session_start();
     } ?>
@@ -31,6 +31,15 @@
                 <?php echo $_SESSION['balance'] ?>
             </li>
         </ul>
+    </div>
+    <div id="slider">
+        <figure>
+            <img src="img/main.jpg">
+            <img src="img/img2.jpeg">
+            <img src="img/img4_c.jpg">
+            <img src="img/img1.png">
+            <img src="img/main.jpg">
+        </figure>
     </div>
 </body>
 
