@@ -1,8 +1,10 @@
-var coin = 0;
+var current = document.getElementById("current");
+var balance_ui = document.getElementById("balance_ui")
 var bet = 0;
 var multiplier = 1;
 var graphData = [{ x: 0, y: 1 }];
 var timer = 10;
+var balance;
 
 document.getElementById("bet").disabled = false;
 document.getElementById("place-bet").disabled = false;
@@ -17,11 +19,26 @@ xhr.onload = function() {
     if (xhr.status === 200) {
         var response = JSON.parse(xhr.responseText);
         coin = response.coin;
+		balance = coin;
 		current.innerHTML = "Balance: $" + coin;
+		balance_ui.innerHTML = coin;
         console.log('Request failed.  Returned status of ' + xhr.status);
     }
 };
 xhr.send();
+
+function updateCoin(coin) {
+    fetch('../Slot_Machine/updatecoin.php', {
+        method: 'PUT',
+        body: JSON.stringify({ coin: coin }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.text())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+}
 
 function drawGraph() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -70,7 +87,10 @@ document.getElementById("place-bet").addEventListener("click", function () {
 	}
 
 	balance -= bet;
-	document.getElementById("balance").innerHTML = balance.toFixed(2);
+	coin = balance;
+	updateCoin(coin)
+	document.getElementById("current").innerHTML = "Balance: $" + balance;
+	document.getElementById("balance_ui").innerHTML = balance;
 });
 
 
@@ -85,13 +105,16 @@ document.getElementById("cash-out").addEventListener("click", function () {
 	bet = 0;
 	multiplier = 1;
 	document.getElementById("multiplier").innerHTML = "1.00x";
-	document.getElementById("balance").innerHTML = balance.toFixed(2);
+	document.getElementById("current").innerHTML = "Balance: $" + balance;
+	document.getElementById("balance_ui").innerHTML = balance;
 	graphData = [{ x: 0, y: 1 }];
 	drawGraph();
 	alert("Your payout is $" + payout.toFixed(2));
 	document.getElementById("bet").disabled = false;
 	document.getElementById("place-bet").disabled = false;
 	document.getElementById("cash-out").disabled = true;
+	coin = balance;
+	updateCoin(coin)
 	startBettingTime();
 });
 
@@ -109,7 +132,6 @@ function startBettingTime() {
 
 function endGame() {
 	var payout = bet;
-	bet = 0;
 	multiplier = 1;
 	document.getElementById("multiplier").innerHTML = "1.00x";
 	graphData = [{ x: 0, y: 1 }];
@@ -117,6 +139,7 @@ function endGame() {
 	if (bet > 0){
 		alert("Your lost your bet amount" + payout.toFixed(2));
 	}
+	bet = 0;
 	document.getElementById("bet").disabled = false;
 	document.getElementById("place-bet").disabled = false;
 	document.getElementById("cash-out").disabled = true;

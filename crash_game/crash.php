@@ -20,7 +20,7 @@
         <ul>
             <li>userID: <?php echo $_SESSION['userID'] ?></li>
             <li>userName: <?php echo $_SESSION['userName'] ?></li>
-            <li>Balance: $<?php echo $_SESSION['balance'] ?></li>
+            <li>Balance: $<span id="balance_ui"></span></li>
         </ul>
     </div>
     <h1>Crash Game</h1>
