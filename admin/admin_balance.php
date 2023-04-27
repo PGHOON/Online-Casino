@@ -15,7 +15,7 @@ $password = '';
 try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e) {
+} catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
 
@@ -37,15 +37,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(':userID', $userID);
     $stmt->bindParam(':balance', $balance);
     $stmt->execute();
-  }
+}
 ?>
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>User Balance</title>
     <link rel="stylesheet" type="text/css" href="admin.css">
 </head>
+
 <body>
     <nav>
         <ul>
@@ -58,15 +60,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h2>Welcome, Admin!</h2>
     </div>
     <div class="center">
-    <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
-      <form method="POST" action="admin_balance.php">
-        <label>userID:</label>
-        <input type="button" name="userID" value="<?php echo $row['userID']; ?>"><br>
-        <label>balance:</label>
-        <input type="text" name="balance" value="<?php echo $row['balance']; ?>"><br>
-        <input type="submit" value="Edit">
-      </form>
-    <?php } ?>
+        <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+            <form method="POST" action="admin_balance.php">
+                <label>userID:</label>
+                <input type="text" name="userID" id="userID" value="<?php echo $row['userID']; ?>"><br>
+                <label>balance:</label>
+                <input type="text" name="balance" value="<?php echo $row['balance']; ?>"><br>
+                <input type="submit" value="Edit">
+            </form>
+        <?php } ?>
     </div>
 </body>
+
 </html>

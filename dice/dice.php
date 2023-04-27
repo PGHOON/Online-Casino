@@ -8,7 +8,9 @@
     <link rel="stylesheet" type="text/css" href="dice.css">
     <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
     <title>Dice</title>
-    <?php session_start(); ?>
+    <?php if (session_status() !== PHP_SESSION_ACTIVE) {
+        session_start();
+    } ?>
 </head>
 
 <body>

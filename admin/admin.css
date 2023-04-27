@@ -1,122 +1,122 @@
 body {
-  background-color: black;
-  color: white;
+    background-color: black;
+    color: white;
 }
 
 h1 {
 
-  text-align: center;
+    text-align: center;
 }
 
 
 input[type="button"],
 input[type="password"],
 input[type="submit"] {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin-bottom: 0px;
-  background-color: white;
-  color: black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 0px;
+    background-color: white;
+    color: black;
 }
 
 input[type="text"] {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-right: 5px;
-  width: 100%;
-  margin-bottom: 0px;
-  background-color: white;
-  color: black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    width: 100%;
+    margin-bottom: 0px;
+    background-color: white;
+    color: black;
 }
 
 
 nav {
-  background-color: #D446D1;
-  color: #fff;
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  padding: 10px;
+    background-color: #D446D1;
+    color: #fff;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding: 10px;
 }
 
 nav ul {
-  display: flex;
-  list-style: none;
+    display: flex;
+    list-style: none;
 
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 nav ul li {
-  margin: 0 20px;
+    margin: 0 20px;
 }
 
 nav ul li a {
-  color: #fff;
-  text-decoration: none;
+    color: #fff;
+    text-decoration: none;
 }
 
 nav ul li a.active {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 hr {
-  border: none;
-  border-top: 1px solid #0c0c0c;
-  margin: 0px 0;
+    border: none;
+    border-top: 1px solid #0c0c0c;
+    margin: 0px 0;
 }
 
 li a:hover {
-  background-color: #566a88;
+    background-color: #566a88;
 }
 
 .active {
-  background-color: #2228d4;
-  color: rgb(10, 221, 236);
+    background-color: #2228d4;
+    color: rgb(10, 221, 236);
 }
 
 .box {
-  border: 2px solid black;
-  border-radius: 20px;
-  padding: 5px;
-  margin: 5px 0;
-  background-color: #98F768;
-  color: black;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 5px;
+    margin: 5px 0;
+    background-color: #98F768;
+    color: black;
 }
 
 h2 {
-  text-align: center;
+    text-align: center;
 }
 
 p {
-  text-align: center;
+    text-align: center;
 }
 
 table {
-  border: 3px solid black;
-  margin: 5em auto;
-  border-collapse: collapse;
-  width: 70%;
+    border: 3px solid black;
+    margin: 5em auto;
+    border-collapse: collapse;
+    width: 70%;
 }
 
 th,
 td {
-  text-align: left;
-  padding: 5px;
-  border: 1.5px solid white;
+    text-align: left;
+    padding: 5px;
+    border: 1.5px solid white;
 }
 
 th {
-  background-color: #13280e;
-  color: white;
+    background-color: #13280e;
+    color: white;
 }
 
 tr:nth-child(even) {
-  background-color: #f2f2f2;
+    background-color: #f2f2f2;
 }
 
 .center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
