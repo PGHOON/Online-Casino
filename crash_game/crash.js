@@ -89,8 +89,8 @@ document.getElementById("place-bet").addEventListener("click", function () {
 	balance -= bet;
 	coin = balance;
 	updateCoin(coin)
-	document.getElementById("current").innerHTML = "Balance: $" + balance;
-	document.getElementById("balance_ui").innerHTML = balance;
+	document.getElementById("current").innerHTML = "Balance: $" + balance.toFixed(2);
+	document.getElementById("balance_ui").innerHTML = balance.toFixed(2);
 });
 
 
@@ -105,8 +105,8 @@ document.getElementById("cash-out").addEventListener("click", function () {
 	bet = 0;
 	multiplier = 1;
 	document.getElementById("multiplier").innerHTML = "1.00x";
-	document.getElementById("current").innerHTML = "Balance: $" + balance;
-	document.getElementById("balance_ui").innerHTML = balance;
+	document.getElementById("current").innerHTML = "Balance: $" + balance.toFixed(2);
+	document.getElementById("balance_ui").innerHTML = balance.toFixed(2);
 	graphData = [{ x: 0, y: 1 }];
 	drawGraph();
 	alert("Your payout is $" + payout.toFixed(2));
