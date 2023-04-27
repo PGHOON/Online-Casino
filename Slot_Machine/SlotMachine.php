@@ -34,8 +34,8 @@
 			<img id="slot3" src="symbols/apple.png" alt="apple image">
 		</div>
 		<button onclick="spin()">Spin</button>
-		<p><span id="current">COIN :</span></p>
 	</div>
+	<p><span id="current">COIN :</span></p>
 	<script src="spin.js"></script>
 	<img src="reward_t.png" alt="Logo" class="center">
 </body>

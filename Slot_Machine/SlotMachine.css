@@ -29,6 +29,9 @@ body {
 }
 
 button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 10px;
     border-radius: 5px;
     border: none;
@@ -38,14 +41,15 @@ button {
     cursor: pointer;
 }
 
-#container #current {
+#current {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 10px;
     border-radius: 5px;
     border: none;
-    background-color: #4CAF50;
     color: white;
     font-size: 20px;
-    cursor: pointer;
 }
 
 nav {
