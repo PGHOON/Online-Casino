@@ -1,4 +1,4 @@
-var balance = 100;
+var coin = 0;
 var bet = 0;
 var multiplier = 1;
 var graphData = [{ x: 0, y: 1 }];
@@ -10,6 +10,18 @@ document.getElementById("cash-out").disabled = true;
 
 var canvas = document.getElementById("graph");
 var ctx = canvas.getContext("2d");
+
+var xhr = new XMLHttpRequest();
+xhr.open('GET', '../Slot_Machine/balance.php');
+xhr.onload = function() {
+    if (xhr.status === 200) {
+        var response = JSON.parse(xhr.responseText);
+        coin = response.coin;
+		current.innerHTML = "Balance: $" + coin;
+        console.log('Request failed.  Returned status of ' + xhr.status);
+    }
+};
+xhr.send();
 
 function drawGraph() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -40,7 +52,7 @@ function updateMultiplier() {
 	graphData.push({ x: graphData.length, y: multiplier });
 	drawGraph();
 
-	if (Math.random() < 0.3) {
+	if (Math.random() < 0.25) {
 		endGame();
 	}
 }
