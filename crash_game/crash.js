@@ -1,5 +1,4 @@
 var balance = 100;
-var bool_bet = 0;
 var bet = 0;
 var multiplier = 1;
 var graphData = [{ x: 0, y: 1 }];
@@ -47,8 +46,12 @@ function updateMultiplier() {
 }
 
 document.getElementById("place-bet").addEventListener("click", function () {
+	if (bet > 0){
+		alert("You have already placed a bet.");
+		return;
+	}
 	bet = parseFloat(document.getElementById("bet").value);
-
+	
 	if (isNaN(bet) || bet <= 0 || bet > balance) {
 		alert("Invalid bet amount.");
 		return;
@@ -56,7 +59,6 @@ document.getElementById("place-bet").addEventListener("click", function () {
 
 	balance -= bet;
 	document.getElementById("balance").innerHTML = balance.toFixed(2);
-	bool_bet = 1;
 });
 
 
@@ -69,7 +71,6 @@ document.getElementById("cash-out").addEventListener("click", function () {
 	var payout = bet * multiplier;
 	balance += payout;
 	bet = 0;
-	bool_bet = 0;
 	multiplier = 1;
 	document.getElementById("multiplier").innerHTML = "1.00x";
 	document.getElementById("balance").innerHTML = balance.toFixed(2);
@@ -83,12 +84,9 @@ document.getElementById("cash-out").addEventListener("click", function () {
 });
 
 function startBettingTime() {
-	timer = 10;
+	timer = 5;
 	var countdown = setInterval(function () {
 		document.getElementById("timer").innerHTML = timer;
-		if (bool_bet == 1){
-			document.getElementById("bet").disabled = true;
-		}
 		if (timer === 0) {
 			clearInterval(countdown);
 			updateMultiplier();
@@ -99,15 +97,12 @@ function startBettingTime() {
 
 function endGame() {
 	var payout = bet;
-	balance += payout;
 	bet = 0;
-	bool_bet = 0;
 	multiplier = 1;
 	document.getElementById("multiplier").innerHTML = "1.00x";
-	document.getElementById("balance").innerHTML = balance.toFixed(2);
 	graphData = [{ x: 0, y: 1 }];
 	drawGraph();
-	alert("Your lost your bet" + payout.toFixed(2));
+	alert("Your lost your bet amount" + payout.toFixed(2));
 	document.getElementById("bet").disabled = false;
 	document.getElementById("place-bet").disabled = false;
 	document.getElementById("cash-out").disabled = true;
