@@ -102,7 +102,9 @@ function endGame() {
 	document.getElementById("multiplier").innerHTML = "1.00x";
 	graphData = [{ x: 0, y: 1 }];
 	drawGraph();
-	alert("Your lost your bet amount" + payout.toFixed(2));
+	if (bet > 0){
+		alert("Your lost your bet amount" + payout.toFixed(2));
+	}
 	document.getElementById("bet").disabled = false;
 	document.getElementById("place-bet").disabled = false;
 	document.getElementById("cash-out").disabled = true;
