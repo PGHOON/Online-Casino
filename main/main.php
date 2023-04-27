@@ -1,9 +1,13 @@
 <!DOCTYPE html>
+
 <head>
     <title>Lance main page</title>
     <link rel="stylesheet" type="text/css" href="main.css">
-    <?php session_start(); ?>
+    <?php if (session_status() !== PHP_SESSION_ACTIVE) {
+        session_start();
+    } ?>
 </head>
+
 <body>
     <nav>
         <ul>
@@ -17,10 +21,17 @@
     <div class="user-info">
         <p>User Information:</p>
         <ul>
-            <li>userID: <?php echo $_SESSION['userID'] ?></li>
-            <li>userName: <?php echo $_SESSION['userName'] ?></li>
-            <li>Balance: $<?php echo $_SESSION['balance'] ?></li>
+            <li>userID:
+                <?php echo $_SESSION['userID'] ?>
+            </li>
+            <li>userName:
+                <?php echo $_SESSION['userName'] ?>
+            </li>
+            <li>Balance: $
+                <?php echo $_SESSION['balance'] ?>
+            </li>
         </ul>
     </div>
 </body>
+
 </html>
