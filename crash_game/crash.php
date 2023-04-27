@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Crash Game</title>
     <link rel="stylesheet" href="crash.css">
     <?php session_start(); ?>
 </head>
+
 <body>
     <nav>
         <ul>
@@ -18,24 +20,30 @@
     <div class="user-info">
         <p>User Information:</p>
         <ul>
-            <li>userID: <?php echo $_SESSION['userID'] ?></li>
-            <li>userName: <?php echo $_SESSION['userName'] ?></li>
+            <li>userID:
+                <?php echo $_SESSION['userID'] ?>
+            </li>
+            <li>userName:
+                <?php echo $_SESSION['userName'] ?>
+            </li>
             <li>Balance: $<span id="balance_ui"></span></li>
         </ul>
     </div>
-    <h1>Crash Game</h1>
-    <canvas id="graph" width="800" height="400"></canvas>
     <div>
-        <label for="bet">Bet amount:</label>
-        <input type="number" id="bet" min="0" step="0.01" placeholder="0.00" disabled>
-        <button id="place-bet" disabled>Place Bet</button>
-        <button id="cash-out" disabled>Cash Out</button>
-    </div>
-    <div>
-        <p>Multiplier: <span id="multiplier">1.00x</span></p>
-		<p><span id="current">Balance: $</span></p>
-        <p>Next game in <span id="timer">5</span> seconds</p>
-    </div>
-    <script src="crash.js"></script>
+        <h1>Crash Game</h1>
+        <canvas id="graph" width="800" height="400"></canvas>
+        <div>
+            <label for="bet">Bet amount:</label>
+            <input type="number" id="bet" min="0" step="0.01" placeholder="0.00" disabled>
+            <button id="place-bet" disabled>Place Bet</button>
+            <button id="cash-out" disabled>Cash Out</button>
+        </div>
+        <div>
+            <p>Multiplier: <span id="multiplier">1.00x</span></p>
+            <p><span id="current">Balance: $</span></p>
+            <p>Next game in <span id="timer">5</span> seconds</p>
+        </div>
+        <script src="crash.js"></script>
 </body>
+
 </html>

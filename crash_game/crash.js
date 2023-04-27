@@ -15,13 +15,13 @@ var ctx = canvas.getContext("2d");
 
 var xhr = new XMLHttpRequest();
 xhr.open('GET', '../Slot_Machine/balance.php');
-xhr.onload = function() {
+xhr.onload = function () {
     if (xhr.status === 200) {
         var response = JSON.parse(xhr.responseText);
         coin = response.coin;
-		balance = coin;
-		current.innerHTML = "Balance: $" + coin;
-		balance_ui.innerHTML = coin;
+        balance = coin;
+        current.innerHTML = "Balance: $" + coin;
+        balance_ui.innerHTML = coin;
         console.log('Request failed.  Returned status of ' + xhr.status);
     }
 };
@@ -35,119 +35,133 @@ function updateCoin(coin) {
             'Content-Type': 'application/json'
         }
     })
-    .then(response => response.text())
-    .then(data => console.log(data))
-    .catch(error => console.error(error));
+        .then(response => response.text())
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
 }
 
 function drawGraph() {
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-	ctx.beginPath();
-	ctx.moveTo(0, canvas.height);
+    ctx.beginPath();
+    ctx.moveTo(0, canvas.height);
 
-	for (var i = 0; i < graphData.length; i++) {
-		var x = graphData[i].x / 100 * canvas.width;
-		var y = (1 / graphData[i].y) * canvas.height;
-		ctx.lineTo(x, y);
-	}
-	ctx.strokeStyle = "white";
-	ctx.stroke();
+    var a = 0.001;
+
+    for (var i = 0; i < graphData.length; i++) {
+
+        var x = (graphData[i].x / 100) * canvas.width;
+        var y = canvas.height - (a * x * x);
+        a *= 0.99;
+        ctx.lineTo(x, y);
+
+        if (i % 5 === 0) {
+            // Draw labels for data points
+            ctx.font = "12px Arial";
+            ctx.fillStyle = "white";
+            ctx.textAlign = "center";
+            ctx.fillText(graphData[i].y.toFixed(2), x, y - 10);
+        }
+    }
+    ctx.strokeStyle = "white";
+    ctx.stroke();
 }
 
+
 function updateMultiplier() {
-	if (timer > 0) {
-		timer--;
-		return;
-	}
+    if (timer > 0) {
+        timer--;
+        return;
+    }
 
-	document.getElementById("bet").disabled = true;
-	document.getElementById("place-bet").disabled = true;
-	document.getElementById("cash-out").disabled = false;
-	multiplier += Math.random() / 10;
-	document.getElementById("multiplier").innerHTML = multiplier.toFixed(2) + "x";
-	graphData.push({ x: graphData.length, y: multiplier });
-	drawGraph();
+    document.getElementById("bet").disabled = true;
+    document.getElementById("place-bet").disabled = true;
+    document.getElementById("cash-out").disabled = false;
+    multiplier += (Math.random() * 0.2 + 0.1);
+    document.getElementById("multiplier").innerHTML = multiplier.toFixed(2) + "x";
+    graphData.push({ x: graphData.length, y: multiplier });
+    drawGraph();
 
-	if (Math.random() < 0.25) {
-		endGame();
-	}
+    if (Math.random() < 0.1) {
+        endGame();
+    }
 }
 
 document.getElementById("place-bet").addEventListener("click", function () {
-	if (bet > 0){
-		alert("You have already placed a bet.");
-		return;
-	}
-	bet = parseFloat(document.getElementById("bet").value);
-	
-	if (isNaN(bet) || bet <= 0 || bet > balance) {
-		alert("Invalid bet amount.");
-		return;
-	}
+    if (bet > 0) {
+        alert("You have already placed a bet.");
+        return;
+    }
+    bet = parseFloat(document.getElementById("bet").value);
 
-	balance -= bet;
-	coin = balance;
-	updateCoin(coin)
-	document.getElementById("current").innerHTML = "Balance: $" + balance.toFixed(2);
-	document.getElementById("balance_ui").innerHTML = balance.toFixed(2);
+    if (isNaN(bet) || bet <= 0 || bet > balance) {
+        alert("Invalid bet amount.");
+        return;
+    }
+
+    balance -= bet;
+    coin = balance;
+    updateCoin(coin)
+    document.getElementById("current").innerHTML = "Balance: $" + balance.toFixed(2);
+    document.getElementById("balance_ui").innerHTML = balance.toFixed(2);
 });
 
 
 document.getElementById("cash-out").addEventListener("click", function () {
-	if (bet == 0) {
-		alert("You have not placed a bet.");
-		return;
-	}
+    if (bet == 0) {
+        alert("You have not placed a bet.");
+        return;
+    }
 
-	var payout = bet * multiplier;
-	balance += payout;
-	bet = 0;
-	multiplier = 1;
-	document.getElementById("multiplier").innerHTML = "1.00x";
-	document.getElementById("current").innerHTML = "Balance: $" + balance.toFixed(2);
-	document.getElementById("balance_ui").innerHTML = balance.toFixed(2);
-	graphData = [{ x: 0, y: 1 }];
-	drawGraph();
-	alert("Your payout is $" + payout.toFixed(2));
-	document.getElementById("bet").disabled = false;
-	document.getElementById("place-bet").disabled = false;
-	document.getElementById("cash-out").disabled = true;
-	coin = balance;
-	updateCoin(coin)
-	startBettingTime();
+    var payout = bet * multiplier;
+    balance += payout;
+    bet = 0;
+    multiplier = 1;
+    document.getElementById("multiplier").innerHTML = "1.00x";
+    document.getElementById("current").innerHTML = "Balance: $" + balance.toFixed(2);
+    document.getElementById("balance_ui").innerHTML = balance.toFixed(2);
+    graphData = [{ x: 0, y: 1 }];
+    drawGraph();
+    alert("Your payout is $" + payout.toFixed(2));
+    document.getElementById("bet").disabled = false;
+    document.getElementById("place-bet").disabled = false;
+    document.getElementById("cash-out").disabled = true;
+    coin = balance;
+    updateCoin(coin)
+    startBettingTime();
 });
 
 function startBettingTime() {
-	timer = 5;
-	var countdown = setInterval(function () {
-		document.getElementById("timer").innerHTML = timer;
-		if (timer === 0) {
-			clearInterval(countdown);
-			updateMultiplier();
-			document.getElementById("timer").innerHTML = "";
-		}
-	}, 1000);
+    timer = 7;
+    var countdown = setInterval(function () {
+        document.getElementById("timer").innerHTML = timer;
+        if (timer === 0) {
+            clearInterval(countdown);
+            updateMultiplier();
+            document.getElementById("timer").innerHTML = "";
+        }
+    }, 1000);
 }
 
 function endGame() {
-	var payout = bet;
-	multiplier = 1;
-	document.getElementById("multiplier").innerHTML = "1.00x";
-	graphData = [{ x: 0, y: 1 }];
-	drawGraph();
-	if (bet > 0){
-		alert("Your lost your bet amount" + payout.toFixed(2));
-	}
-	bet = 0;
-	document.getElementById("bet").disabled = false;
-	document.getElementById("place-bet").disabled = false;
-	document.getElementById("cash-out").disabled = true;
-	startBettingTime();
+
+    var payout = bet;
+    multiplier = 1;
+    document.getElementById("multiplier").innerHTML = "1.00x";
+    graphData = [{ x: 0, y: 1 }];
+    drawGraph();
+    if (bet > 0) {
+        alert("Your lost your bet amount" + payout.toFixed(2));
+    }
+    bet = 0;
+    document.getElementById("bet").disabled = false;
+    document.getElementById("place-bet").disabled = false;
+    document.getElementById("cash-out").disabled = true;
+    startBettingTime();
 }
 
 startBettingTime();
 
 setInterval(function () {
-	updateMultiplier();
+    updateMultiplier();
 }, 1000);
