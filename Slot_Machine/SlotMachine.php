@@ -1,45 +1,10 @@
-<?php
-session_start();
-
-// Database Connection
-$host = 'localhost';
-$dbname = 'lance';
-$username = 'root';
-$password = '';
-
-// Test Connection
-try {
-	$conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-	echo "Connection failed: " . $e->getMessage();
-}
-
-// Query for user account
-if (isset($_SESSION['userID'])) {
-	$query = "SELECT * FROM account WHERE account.userID = :userID";
-
-	$stmt = $conn->prepare($query);
-	$stmt->bindParam(':userID', $_SESSION['userID']);
-	$stmt->execute();
-
-	// Check for errors
-	if ($stmt) {
-		$row = $stmt->fetch(PDO::FETCH_ASSOC);
-	} else {
-		echo "Error retrieving user account.";
-	}
-}
-?>
-
 <!DOCTYPE html>
 <html>
-
 <head>
-	<title>Slot Machine Protopyte</title>
+	<title>Slot Game</title>
 	<link rel="stylesheet" href="SlotMachine.css">
+	<?php session_start(); ?>
 </head>
-
 <body>
 	<nav>
 		<ul>
@@ -55,7 +20,7 @@ if (isset($_SESSION['userID'])) {
 		<ul>
 			<li>userID: <?php echo $_SESSION['userID'] ?></li>
 			<li>userName: <?php echo $_SESSION['userName'] ?></li>
-			<li>Balance: $<?php echo $_SESSION['balance'] ?></li>
+			<li>Balance: $<span id="balance"></span></li>
 		</ul>
 	</div>
 	<div id="container">

@@ -18,6 +18,7 @@ var slot3 = document.getElementById("slot3");
 
 // Coin
 var current = document.getElementById("current");
+var balance = document.getElementById("balance")
 var coin = 0;
 
 var xhr = new XMLHttpRequest();
@@ -27,6 +28,7 @@ xhr.onload = function() {
         var response = JSON.parse(xhr.responseText);
         coin = response.coin;
         current.innerHTML = "COIN : " + coin;
+        balance.innerHTML = coin;
     } else {
         console.log('Request failed.  Returned status of ' + xhr.status);
     }
@@ -50,6 +52,7 @@ function updateCoin(coin) {
 function spin() {
     coin--;
     current.innerHTML = "COIN : " + coin;
+    balance.innerHTML = coin;
     var spins = [];
 
     //winning probability
@@ -96,6 +99,6 @@ function spin() {
         coin += 1;
         current.innerHTML = "COIN : " + coin;
     };
-
+    balance.innerHTML = coin;
     updateCoin(coin);
 }
