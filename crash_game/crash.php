@@ -29,6 +29,17 @@
             <li>Balance: $<span id="balance_ui"></span></li>
         </ul>
     </div>
+    <div class="modal" id="modal">
+        <div class="modal-header">
+            <div class="title">Crashed!!</div>
+            <button id="modalClose" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>Last game crashed at: <span id="multiplier2"></span></p>
+        </div>
+    </div>
+    <div id="overlay"></div>
+
     <div>
         <h1>Crash Game</h1>
         <canvas id="graph" width="800" height="400"></canvas>
@@ -44,6 +55,7 @@
             <p>Next game in <span id="timer">5</span> seconds</p>
         </div>
         <script src="crash.js"></script>
+        <script src="modal.js"></script>
 </body>
 
 </html>

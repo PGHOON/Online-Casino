@@ -5,6 +5,9 @@ var multiplier = 1;
 var graphData = [{ x: 0, y: 1 }];
 var timer = 10;
 var balance;
+var count = 0;
+
+var crashModal = document.getElementById("modal");
 
 document.getElementById("bet").disabled = false;
 document.getElementById("place-bet").disabled = false;
@@ -82,7 +85,7 @@ function updateMultiplier() {
     graphData.push({ x: graphData.length, y: multiplier });
     drawGraph();
 
-    if (Math.random() < 0.1) {
+    if (Math.random() < 0.07) {
         endGame();
     }
 }
@@ -132,19 +135,22 @@ document.getElementById("cash-out").addEventListener("click", function () {
 });
 
 function startBettingTime() {
-    timer = 7;
+    count += 1;
+    timer = 11;
     var countdown = setInterval(function () {
-        document.getElementById("timer").innerHTML = timer;
+        document.getElementById("timer").innerHTML = Math.floor(timer / 2);
         if (timer === 0) {
             clearInterval(countdown);
             updateMultiplier();
             document.getElementById("timer").innerHTML = "";
         }
-    }, 1000);
+    }, 500);
 }
 
 function endGame() {
-
+    crashModal.style.display = "block";
+    document.getElementById("multiplier2").innerHTML = multiplier.toFixed(2) + "x";
+    openModal(crashModal);
     var payout = bet;
     multiplier = 1;
     document.getElementById("multiplier").innerHTML = "1.00x";
@@ -164,4 +170,22 @@ startBettingTime();
 
 setInterval(function () {
     updateMultiplier();
-}, 1000);
+}, 500);
+
+
+overlay.addEventListener('click', () => {
+    const modals = document.querySelectorAll('.modal.active')
+    modals.forEach(modal => {
+        closeModal();
+    })
+})
+
+function openModal(modal) {
+    if (modal == null) return
+    modal.classList.add('active');
+    overlay.classList.add('active');
+}
+
+function closeModal() {
+    crashModal.style.display = "none";
+}
