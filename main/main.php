@@ -5,7 +5,11 @@
     <link rel="stylesheet" type="text/css" href="main1.css">
     <?php if (session_status() !== PHP_SESSION_ACTIVE) {
         session_start();
-    } ?>
+    }
+    if ($_SESSION['userID'] == 0) {
+        header('Location: ../admin/admin.php');
+    }
+    ?>
 </head>
 
 <body>
