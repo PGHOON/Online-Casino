@@ -7,7 +7,7 @@ Lance
 
 
 - Login
-![ezgif com-video-to-gif](https://user-images.githubusercontent.com/64999538/235075073-1370d50c-991b-4b17-a982-b3c37e497c6b.gif)
+![login](https://user-images.githubusercontent.com/64999538/235077405-bc5ad85b-f1ee-4a72-a616-9d67bbe19431.gif)
 
 - Dice Game
 ![dice](https://user-images.githubusercontent.com/64999538/235071626-a3fcd805-5823-4095-b34a-246c619f0303.gif)
