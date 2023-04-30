@@ -21,9 +21,6 @@
             <div class="sign-up">
                 <a href="register.html"> I don't have an account</a>
             </div>
-            <div class="find-pw">
-                <a href="#"> I forgot my password</a>
-            </div>
         </form>
         <?php
         if (isset($_GET['error'])) {

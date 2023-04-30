@@ -96,7 +96,7 @@ button:hover {
     border: 1px solid black;
     border-radius: 10px;
     z-index: 10;
-    background-color: darkorchid;
+    background-color: #0000EA;
     width: 820px;
     height: 400px;
     max-width: 80%;
@@ -125,7 +125,7 @@ button:hover {
     cursor: pointer;
     border: none;
     outline: none;
-    background: blue;
+    background: rgb(32, 32, 127);
 }
 
 .modal-body {
